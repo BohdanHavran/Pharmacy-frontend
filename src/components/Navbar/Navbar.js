@@ -20,6 +20,11 @@ const Navbar = () => {
     const handleClick = () => {
         setMobileNav(!mobileNav)
     }
+
+    const handleMenuItemClick = () => {
+        setMobileNav(false);
+    };
+    
     //header change function 
     const onChangeHeader = () => {
         if (window.scrollY >= 50) {
@@ -67,7 +72,7 @@ const Navbar = () => {
                         <ul className="mb-2">
                             {menu.map(item => (
                                 <li key={item.id} className="mb-3">
-                                    <NavLink exact key={item.id} to={item.to} className="text-gray-600 poppins text-lg text-center py-2 px-3 w-full hover:bg-gray-200 transition duration-300 cursor-default block rounded-lg" activeClassName="border-l-4 border-blue-700 bg-gray-200">
+                                    <NavLink exact key={item.id} to={item.to} className="text-gray-600 poppins text-lg text-center py-2 px-3 w-full hover:bg-gray-200 transition duration-300 cursor-default block rounded-lg" activeClassName="border-l-4 border-blue-700 bg-gray-200" onClick={handleMenuItemClick}>
                                     {item.text}
                                     </NavLink>
                                 </li>

@@ -29,7 +29,7 @@ const App = () => {
             <PublicRoute path="/signin"><SignInScreen /></PublicRoute>
             <PrivateRoute exact path="/services/:title"><ServicesDetailScreen /></PrivateRoute>
             <Route exact path="/products/"><ProductsScreen /></Route>
-            <PrivateRoute exact path="/products/:title"><ProductDetailScreen /></PrivateRoute>
+            <PrivateRoute exact path="/products/:name"><ProductDetailScreen /></PrivateRoute>
             <PrivateRoute exact path="/orders"><OrderScreen /></PrivateRoute>
             <Route path="*"><ErrorScreen /></Route>
           </Switch>

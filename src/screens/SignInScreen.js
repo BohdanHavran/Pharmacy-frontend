@@ -3,7 +3,6 @@ import Bounce from 'react-reveal/Bounce'
 import { Link } from 'react-router-dom'
 import Brand from '../components/Brand'
 import Button from '../components/Form/Button'
-import GoogleSignIn from '../components/Form/GoogleSignIn'
 import TextField from '../components/Form/TextField'
 import useAuth from '../hooks/useAuth'
 
@@ -70,8 +69,6 @@ const SignInScreen = () => {
                             <Link to="/signup">
                                 <p className="text-base text-primary text-center my-6 hover:underline">Need an account ?</p>
                             </Link>
-
-                            <GoogleSignIn text="Sign In With Google" />
                         </form>
                     </div>
                 </Bounce>

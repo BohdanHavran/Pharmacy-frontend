@@ -13,7 +13,7 @@ const AuthorizeUserMobile = () => {
     return (
         <>
             {
-                user.displayName ? (
+                user && user.displayName ? ( 
                     <>
                         <div className="flex flex-col items-center space-y-4">
                             <div className="relative flex cursor-pointer" onClick={() => history.push('/orders')}>
@@ -22,6 +22,9 @@ const AuthorizeUserMobile = () => {
                             </div>
                             {!user.photoURL.endsWith("g") ? (<img src="https://cdn-icons-png.flaticon.com/512/236/236832.png" alt={user.displayName} className="w-10 h-10 rounded-full" />) : (
                                 <img src={user.photoURL} alt={user.displayName} className="w-10 h-10 rounded-full" />
+                            )}
+                            { user.status > 0 && (
+                                <button className="poppins">Admin Panel</button>
                             )}
                             <Button className="btn-primary w-full py-3 poppins" onClick={signOutUser} text="Logout" />
                         </div>

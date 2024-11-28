@@ -11,20 +11,22 @@ const override = css`
 `;
 
 const PrivateRoute = ({ children, ...rest }) => {
-    const { user, isLoading  } = useAuth();
+    const { user, isLoading } = useAuth();
+
+    // Показати завантаження, поки isLoading true
     if (isLoading) {
         return (
             <div className="flex flex-col items-center justify-center h-screen">
                 <GridLoader color="#1d4ed8" css={override} size={25} />
-
             </div>
-        )
+        );
     }
+
     return (
         <Route
             {...rest}
             render={({ location }) =>
-                user.displayName ? (
+                user && user.displayName ? ( // Додана перевірка на наявність user
                     children
                 ) : (
                     <Redirect
@@ -36,7 +38,7 @@ const PrivateRoute = ({ children, ...rest }) => {
                 )
             }
         />
-    )
+    );
 }
 
-export default PrivateRoute
+export default PrivateRoute;

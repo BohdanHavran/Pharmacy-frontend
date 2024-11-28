@@ -1,27 +1,40 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 
 export const OrderContext = createContext();
 
 const OrderProvider = ({children}) => {
     const [orders, setOrders] = useState([]);
 
-    //handle cart 
-    const handleCart = (products) => {
+    // Завантаження замовлень з localStorage
+    useEffect(() => {
+        const storedOrders = JSON.parse(localStorage.getItem('orders'));
+        if (storedOrders) {
+            setOrders(storedOrders);
+        }
+    }, []);
+
+    // Функція для збереження замовлень в localStorage
+    useEffect(() => {
+        if (orders.length > 0) {
+            localStorage.setItem('orders', JSON.stringify(orders));
+        }
+    }, [orders]);
+
+    // Додавання товару до корзини
+    const handleCart = (product) => {
         setOrders(prev => {
-            return [
-                ...prev,
-                products
-            ]
+            const updatedOrders = [...prev, product];
+            return updatedOrders;
         });
     }
 
-    //remove product
-    const removeProduct = (id) => {
+    // Видалення товару з корзини
+    const removeProduct = (id_products) => {
         setOrders((prev) => {
-            return prev.filter(item => {
-                return item.id !== id
-            })
-        })
+            const updatedOrders = prev.filter(item => item.id_products !== id_products);
+            localStorage.removeItem('updatedOrders');
+            return updatedOrders;
+        });
     }
 
     const value = {
@@ -29,6 +42,7 @@ const OrderProvider = ({children}) => {
         handleCart,
         removeProduct
     }
+
     return (
         <OrderContext.Provider value={value}>
             {children}
@@ -36,4 +50,4 @@ const OrderProvider = ({children}) => {
     )
 }
 
-export default OrderProvider
+export default OrderProvider;

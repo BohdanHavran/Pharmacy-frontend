@@ -12,20 +12,21 @@ const override = css`
 
 const PublicRoute = ({ children, ...rest }) => {
     const { user, isLoading } = useAuth();
+
+    // Показати завантаження, поки isLoading true
     if (isLoading) {
         return (
             <div className="flex flex-col items-center justify-center h-screen">
                 <GridLoader color="#1d4ed8" css={override} size={25} />
-
             </div>
-        )
+        );
     }
 
     return (
         <Route
             {...rest}
             render={({ location }) =>
-                !user.displayName ? (
+                !user || !user.displayName ? ( // Перевірка на наявність user
                     children
                 ) : (
                     <Redirect
@@ -37,7 +38,7 @@ const PublicRoute = ({ children, ...rest }) => {
                 )
             }
         />
-    )
+    );
 }
 
-export default PublicRoute
+export default PublicRoute;

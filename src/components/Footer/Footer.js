@@ -6,17 +6,13 @@ const Footer = () => {
 
     const footerLink = [
         { id: 1, text: 'Monday to Sunday' },
-        { id: 2, text: '7 am to 9 pm' },
-        { id: 3, text: '45 Hudson Street' },
-        { id: 4, text: 'Villa Rica, GA 30180' },
-        { id: 5, text: 'Pharmacy Help Line' },
-        { id: 6, text: 'Prescribing Tools' },
-        { id: 7, text: 'Specialty Medications' },
-        { id: 8, text: 'Pharmacy Claims' },
-        { id: 9, text: '+ (713)534-2319' },
-        { id: 10, text: '+ (733)364-5123' },
-        { id: 11, text: '+ (265)445-1158' },
-        { id: 12, text: '+ (713)534-2319' },
+        { id: 2, text: '8 am to 10 pm' },
+        { id: 3, text: '18 Gorbachevskiy Street' },
+        { id: 4, text: 'Pharmacy Help Line' },
+        { id: 5, text: 'Prescribing Tools' },
+        { id: 6, text: 'Specialty Medications' },
+        { id: 7, text: 'Pharmacy Claims' },
+        { id: 8, text: '+38(096)55-48-689' },
     ]
     return (
         <Fade left>
@@ -31,8 +27,13 @@ const Footer = () => {
                         <nav className="list-none mb-10 flex flex-col space-y-2">
                             {/* list  */}
                             {
-                                footerLink.slice(0, 4).map(item => (
-                                    <a href="http://github.com/19smabtahinoor" target="_blank" rel="noopener noreferrer" key={item.id} className="text-sm hover:underline">{item.text}</a>
+                                footerLink.slice(0, 2).map(item => (
+                                    <p target="_blank" rel="noopener noreferrer" key={item.id} className="text-sm">{item.text}</p>
+                                ))
+                            }
+                            {
+                                footerLink.slice(2, 3).map(item => (
+                                    <a href="https://maps.app.goo.gl/G3PrXPcqxDgSCzCV8" target="_blank" rel="noopener noreferrer" key={item.id} className="text-sm hover:underline">{item.text}</a>
                                 ))
                             }
                         </nav>
@@ -42,9 +43,10 @@ const Footer = () => {
                         <nav className="list-none mb-10 flex flex-col space-y-2">
                             {/* list  */}
                             {
-                                footerLink.slice(4, 8).map(item => (
-                                    <a href="http://github.com/19smabtahinoor" target="_blank" rel="noopener noreferrer" key={item.id} className="text-sm hover:underline">{item.text}</a>
+                                footerLink.slice(3, 7).map(item => (
+                                    <a href="/" target="_blank" rel="noopener noreferrer" key={item.id} className="text-sm hover:underline">{item.text}</a>
                                 ))
+                                
                             }
                         </nav>
                     </div>
@@ -53,8 +55,10 @@ const Footer = () => {
                         <nav className="list-none mb-10 flex flex-col space-y-2">
                             {/* list  */}
                             {
-                                footerLink.slice(8, 12).map(item => (
-                                    <a href="http://github.com/19smabtahinoor" target="_blank" rel="noopener noreferrer" key={item.id} className="text-sm hover:underline">{item.text}</a>
+                                footerLink.slice(7).map(item => (
+                                    <a href={`tel:${item.text}`} key={item.id} className="text-sm hover:underline">
+                                        {item.text}
+                                    </a>
                                 ))
                             }
                         </nav>
@@ -64,9 +68,7 @@ const Footer = () => {
             </div>
             <div className="bg-blue-700">
                 <div className="max-w-screen-xl mx-auto py-4 px-5 flex flex-wrap flex-col justify-center sm:flex-row">
-                    <p className="text-white text-sm text-center sm:text-left">© 2021 Developed by —
-                        <a href="https://github.com/19smabtahinoot" rel="noopener noreferrer" className="text-white ml-1" target="_blank">S.M.Abtahi Noor</a>
-                    </p>
+                    <p className="text-white text-sm text-center sm:text-left">© 2024 Bohdan Havran</p>
                 </div>
             </div>
         </footer>

@@ -3,11 +3,13 @@ import Bounce from 'react-reveal/Bounce'
 import { Link } from 'react-router-dom'
 import Brand from '../components/Brand'
 import Button from '../components/Form/Button'
-import GoogleSignIn from '../components/Form/GoogleSignIn'
 import TextField from '../components/Form/TextField'
 import useAuth from '../hooks/useAuth'
+import swal from 'sweetalert';
+//import { useHistory } from 'react-router-dom';
 
 const SignUpScreen = () => {
+    //const history = useHistory();
     const [userInput, setUserInput] = useState({
         name: '',
         email: '',
@@ -38,7 +40,15 @@ const SignUpScreen = () => {
     //handle submit form 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await signUpUser(userInput.email, userInput.password, userInput.name, userInput.image)
+    
+        // Перевірка, чи всі поля (окрім фото) заповнені
+        if (!userInput.name || !userInput.email || !userInput.password) {
+            swal("Error", "Please fill in all fields except the profile picture.", "error");
+            return;
+        }
+    
+        // Викликаємо функцію реєстрації користувача
+        await signUpUser(userInput.email, userInput.password, userInput.name, userInput.image);
     }
 
     return (
@@ -67,8 +77,6 @@ const SignUpScreen = () => {
                             <Link to="/signin">
                                 <p className="text-base text-primary text-center my-6 hover:underline">Already have an account ?</p>
                             </Link>
-
-                            <GoogleSignIn text="Sign Up With Google" />
                         </form>
                     </div>
                 </Bounce>
